@@ -1,0 +1,52 @@
+.wrapper {
+    padding: 20px 20px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: cornflowerblue;
+    background-size: cover; 
+    background-position: center;
+}
+h1 {
+    color: #fff;
+}    
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+
+    
+}
+    
+ul li:nth-child(odd){
+    background: #ccc;
+}
+ul li:hover {
+    background: #66c766;
+}
+
+
+ul li.completed {
+    text-decoration: line-through;
+    background: #bf5a71;
+    color: white;
+}    
+.removeListItem {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px
+}
+
+.removeListItem:hover {
+    background-color: #ff0a0a;
+    color: white;
+}

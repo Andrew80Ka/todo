@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo List-3</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="container">
+  <div class="wrapper">
+  <h1>To Do List</h1>
+  <input id="toDo" type="text" placeholder="Добавить дело...">
+  <input id="btn" onclick="newListItem()" type="submit" value="Добавить">
+  </div>
+  <ul id="toDoList">
+    
+  </ul>
+  
+</div>
+<script>
+  /*============
+  
+  Создаем элементов списка
+  
+  =============*/
+    
+    var myList = document.getElementsByTagName("li");
+    var i;
+    for ( i = 0; i < myList.length; i++ ){
+        var span = document.createElement("span");
+        var cross = document.createTextNode("\u00D7");
+        span.className = "removeListItem";
+        span.appendChild(cross);
+        myList[i].appendChild(span);
+        
+    }
+    /*============
+  
+     удаление элементов списка при нажатии
+    
+    =============*/
+  
+    var removeListItem = document.getElementsByClassName("removeListItem");
+    var i;
+    for ( i = 0; i < removeListItem.length ; i++ ){
+        removeListItem[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+    }
+    
+    /*============
+  
+    проверка элементов на нажатие
+    
+    =============*/
+    
+    var toDoList = document.querySelector("ul");
+    toDoList.addEventListener("click", function(ev){
+       if(ev.target.tagName === "LI"){
+           ev.target.classList.toggle("completed");
+       }
+    }, false );
+  
+    /*============
+    
+    добавление дел в список
+  
+    =============*/
+    
+    function newListItem(){
+        var li = document.createElement("li");
+        var inputVal = document.getElementById("toDo").value;
+        var p = document.createTextNode(inputVal);
+        li.appendChild(p);
+            if (inputVal === ""){
+                alert("Добавь дело!");
+            }
+            else{
+                document.getElementById("toDoList").appendChild(li);
+            }
+        document.getElementById("toDo").value = "";
+        var span = document.createElement("span");
+        var cross = document.createTextNode("\u00D7");
+        span.className = "removeListItem";
+        span.appendChild(cross);
+        li.appendChild(span);
+        for (i = 0; i < removeListItem.length; i++){
+            removeListItem[i].onclick = function(){
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+    }
+  </script>
+</body>
+</html>
